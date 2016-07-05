@@ -1,0 +1,21 @@
+create table employee(
+    idEmployee serial,
+    login varchar(50) unique,
+    password varchar(50),
+    role varchar(50),
+    primary key (idEmployee)
+);
+
+create table delivery(
+	idDelivery serial,
+	fkEmployee int,
+	address varchar(100),
+	image bytea,
+	description varchar(100),
+	status varchar(20),
+	downloaded boolean,
+	primary key (idDelivery),
+	foreign key (fkEmployee) references employee (idEmployee)
+);
+
+insert into employee (login, password, role) values ('operator', 'test', 'operator')
